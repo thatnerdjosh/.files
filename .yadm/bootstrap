@@ -2,3 +2,7 @@
 
 go get -u mvdan.cc/sh/cmd/shfmt
 vim +PlugInstall
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
+mkdir -p "$(rbenv root)"/plugins
+git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
