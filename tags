@@ -1,0 +1,57 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+<C-n>	.vimrc	/^map <C-n> :NERDTreeToggle<CR>$/;"	m
+backgroundColor	.hyper.js	/^    backgroundColor: '#000',$/;"	p	class:module.exports.config
+bell	.hyper.js	/^    bell: 'SOUND',$/;"	p	class:module.exports.config
+black	.hyper.js	/^      black: '#000000',$/;"	p	class:module.exports.config.colors
+blue	.hyper.js	/^      blue: '#0A2FC4',$/;"	p	class:module.exports.config.colors
+borderColor	.hyper.js	/^    borderColor: '#333',$/;"	p	class:module.exports.config
+colors	.hyper.js	/^    colors: {$/;"	c	class:module.exports.config
+config	.hyper.js	/^  config: {$/;"	c	class:module.exports
+copyOnSelect	.hyper.js	/^    copyOnSelect: false,$/;"	p	class:module.exports.config
+css	.hyper.js	/^    css: '',$/;"	p	class:module.exports.config
+cursorAccentColor	.hyper.js	/^    cursorAccentColor: '#000',$/;"	p	class:module.exports.config
+cursorBlink	.hyper.js	/^    cursorBlink: false,$/;"	p	class:module.exports.config
+cursorColor	.hyper.js	/^    cursorColor: 'rgba(248,28,229,0.8)',$/;"	p	class:module.exports.config
+cursorShape	.hyper.js	/^    cursorShape: 'BLOCK',$/;"	p	class:module.exports.config
+cyan	.hyper.js	/^      cyan: '#20C5C6',$/;"	p	class:module.exports.config.colors
+defaultSSHApp	.hyper.js	/^    defaultSSHApp: true,$/;"	p	class:module.exports.config
+env	.hyper.js	/^    env: {},$/;"	p	class:module.exports.config
+exports	.hyper.js	/^module.exports = {$/;"	c	class:module
+fontFamily	.hyper.js	/^    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',$/;"	p	class:module.exports.config
+fontSize	.hyper.js	/^    fontSize: 18,$/;"	p	class:module.exports.config
+fontWeight	.hyper.js	/^    fontWeight: 'normal',$/;"	p	class:module.exports.config
+fontWeightBold	.hyper.js	/^    fontWeightBold: 'bold',$/;"	p	class:module.exports.config
+foregroundColor	.hyper.js	/^    foregroundColor: '#fff',$/;"	p	class:module.exports.config
+g:lightline	.vimrc	/^let g:lightline = {$/;"	v
+ga	.vimrc	/^nmap ga <Plug>(EasyAlign)$/;"	m
+ga	.vimrc	/^xmap ga <Plug>(EasyAlign)$/;"	m
+green	.hyper.js	/^      green: '#1DC121',$/;"	p	class:module.exports.config.colors
+keymaps	.hyper.js	/^  keymaps: {$/;"	p	class:module.exports
+lightBlack	.hyper.js	/^      lightBlack: '#686868',$/;"	p	class:module.exports.config.colors
+lightBlue	.hyper.js	/^      lightBlue: '#6A76FB',$/;"	p	class:module.exports.config.colors
+lightCyan	.hyper.js	/^      lightCyan: '#68FDFE',$/;"	p	class:module.exports.config.colors
+lightGreen	.hyper.js	/^      lightGreen: '#67F86F',$/;"	p	class:module.exports.config.colors
+lightMagenta	.hyper.js	/^      lightMagenta: '#FD7CFC',$/;"	p	class:module.exports.config.colors
+lightRed	.hyper.js	/^      lightRed: '#FD6F6B',$/;"	p	class:module.exports.config.colors
+lightWhite	.hyper.js	/^      lightWhite: '#FFFFFF',$/;"	p	class:module.exports.config.colors
+lightYellow	.hyper.js	/^      lightYellow: '#FFFA72',$/;"	p	class:module.exports.config.colors
+localPlugins	.hyper.js	/^  localPlugins: [],$/;"	p	class:module.exports
+magenta	.hyper.js	/^      magenta: '#C839C5',$/;"	p	class:module.exports.config.colors
+padding	.hyper.js	/^    padding: '12px 14px',$/;"	p	class:module.exports.config
+plugins	.hyper.js	/^  plugins: [$/;"	p	class:module.exports
+red	.hyper.js	/^      red: '#C51E14',$/;"	p	class:module.exports.config.colors
+selectionColor	.hyper.js	/^    selectionColor: 'rgba(248,28,229,0.3)',$/;"	p	class:module.exports.config
+shell	.hyper.js	/^    shell: '',$/;"	p	class:module.exports.config
+shellArgs	.hyper.js	/^    shellArgs: ['--login'],$/;"	p	class:module.exports.config
+showHamburgerMenu	.hyper.js	/^    showHamburgerMenu: '',$/;"	p	class:module.exports.config
+showWindowControls	.hyper.js	/^    showWindowControls: '',$/;"	p	class:module.exports.config
+termCSS	.hyper.js	/^    termCSS: '',$/;"	p	class:module.exports.config
+updateChannel	.hyper.js	/^    updateChannel: 'stable',$/;"	p	class:module.exports.config
+white	.hyper.js	/^      white: '#C7C7C7',$/;"	p	class:module.exports.config.colors
+yellow	.hyper.js	/^      yellow: '#C7C329',$/;"	p	class:module.exports.config.colors
