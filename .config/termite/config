@@ -1,0 +1,76 @@
+# ----------------------------------------------------------------------
+# file:    ~/.config/termite/config
+# author:  moparx     - http://moparx.com/configs
+# date:    05/08/2013 - 18:12 EDT
+# vim: set ai et fenc=utf-8 ft=conf nu si sts=0 sw=4 ts=8 tw=0 : 
+# ----------------------------------------------------------------------
+
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Source Code Pro 22
+scrollback_lines = 1000
+
+# cursor
+cursor_blink = system
+cursor_shape = block
+
+[colors]
+foreground = #cccccc
+foreground_bold = #ffffff
+foreground_dim = #888888
+background = rgba(51,51,51,.9)
+cursor = #999999
+ 
+# if unset, will reverse foreground and background
+#highlight = #2f2f2f
+  
+# colors from color0 to color254 can be set
+#color0 = #666666
+#color1 = #CC6699
+#color2 = #99CC66
+#color3 = #CC9966
+#color4 = #6699CC
+#color5 = #9966CC
+#color6 = #66CC99
+#color7 = #CCCCCC
+#color8 = #999999
+#color9 = #FF99CC
+#color10 = #CCFF99
+#color11 = #FFCC99
+#color12 = #99CCFF
+#color13 = #CC99FF
+#color14 = #99FFCC
+#color15 = #FFFFFF
+#
+
+# Solarized
+# ---------
+color0  = #073642
+color1  = #dc322f
+color2  = #859900
+color3  = #b58900
+color4  = #268bd2
+color5  = #d33682
+color6  = #2aa198
+color7  = #eee8d5
+color8  = #002b36
+color9  = #cb4b16
+color10 = #586e75
+color11 = #657b83
+color12 = #839496
+color13 = #6c71c4
+color14 = #93a1a1
+color15 = #fdf6e3
+
+[hints]
+foreground = #55FFFF
+
