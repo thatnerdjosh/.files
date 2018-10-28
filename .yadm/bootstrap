@@ -1,11 +1,23 @@
 #!/bin/bash
 
+# Install go
+#curl https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz -O
+sudo tar -C /usr/local -xzf go1.11.1.linux-amd64.tar.gz
 go get -u mvdan.cc/sh/cmd/shfmt
+
+# Configure ViM
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-cd ~/.rbenv && src/configure && make -C src
-exec $SHELL
-mkdir -p "$(rbenv root)"/plugins
-git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+
+# Install docker-ce
+distro=$(lsb_release -si)
+if [ "$distro" = "Fedora" ]; then
+  sudo dnf -y install dnf-plugins-core
+  sudo dnf config-manager \
+      --add-repo \
+      https://download.docker.com/linux/fedora/docker-ce.repo
+  sudo dnf -y install docker-ce
+  sudo systemctl enable docker && sudo systemctl start docker
+  sudo usermod -aG docker $(whoami)
+fi
