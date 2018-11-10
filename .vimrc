@@ -62,15 +62,21 @@ au BufNewFile,BufRead *.py
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
-    \ set fileformat=unix
+    \ set fileformat=unix |
+    \ nnoremap <buffer> <leader>r :exec '!python' shellescape(@%, 1)<cr>
 
 au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h 
-"    \ match Cursor /\s\+$/
+au BufNewFile,BufRead *.go
+    \ nnoremap <buffer> <leader>r :GoRun<cr>
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h
+    \ match ExtraWhitespace /\s\+$/
+
 set encoding=utf-8
 let python_highlight_all=1
 let g:ycm_autoclose_preview_window_after_completion=1
