@@ -171,7 +171,8 @@ function parse_git_dirty {
 }
 
 export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\W\[\e[m\] \[\e[31m\]\`parse_git_branch\`\[\e[m\]\\$ "
-export PATH="~/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
