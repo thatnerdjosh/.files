@@ -25,7 +25,7 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'itchyny/lightline.vim'
 call plug#end()
-colorscheme nord
+silent! colorscheme nord
 
 set path=$PWD/**
 "
