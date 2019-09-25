@@ -171,9 +171,25 @@ function parse_git_dirty {
 }
 
 export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\W\[\e[m\] \[\e[31m\]\`parse_git_branch\`\[\e[m\]\\$ "
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
-alias edit="docker run --rm -it -v $(pwd):/home/developer/workspace omnidapps/vim:alpine vim"
+
+function ed() {
+ local dtc_id=$(docker ps -a -q --filter 'name=vim-go-tools')
+ if [[ -z "${dtc_id}" ]]; then
+  echo 'vim-go-tools container not found. Creating...'
+  docker create -v '/usr/lib/go' --name 'vim-go-tools' \
+    'jare/go-tools' '/bin/true'
+  echo 'Done!'
+ fi
+ docker run -it --rm --volumes-from vim-go-tools -v $('pwd'):/home/developer/workspace omnidapps/vim:alpine "${@}"
+}
+
+if [ -x "$(command -v docker)" ]; then
+  export -f ed
+else
+  echo "WARNING: Docker not installed, so vim will not be containerized."
+fi
