@@ -1,6 +1,8 @@
 " ================ Plugin Config ====================
 " https://github.com/junegunn/vim-plug
 call plug#begin()
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'
 Plug 'tpope/vim-sensible'
 Plug 'arcticicestudio/nord-vim'
 Plug 'sbdchd/neoformat'
@@ -83,6 +85,13 @@ let python_highlight_all=1
 let g:ycm_autoclose_preview_window_after_completion=1
 let mapleader = ","
 let g:ctrlp_extensions = ['tag']
+let g:go_snippet_engine = "neosnippet"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+ \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 map <leader>n :NERDTreeToggle<CR>
 map <leader>t :tabnew<CR>
