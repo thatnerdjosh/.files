@@ -1,6 +1,7 @@
 " ================ Plugin Config ====================
 " https://github.com/junegunn/vim-plug
 call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'tpope/vim-sensible'
