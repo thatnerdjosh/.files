@@ -193,3 +193,5 @@ if [ -x "$(command -v docker)" ]; then
 else
   echo "WARNING: Docker not installed, so vim will not be containerized."
 fi
+
+alias vim="docker run -it --rm --volumes-from tmux omnidapps/nvim:alpine nvim"
