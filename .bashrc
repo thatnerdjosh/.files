@@ -181,11 +181,11 @@ function ed() {
  local dtc_id=$(docker ps -a -q --filter 'name=vim-go-tools')
  if [[ -z "${dtc_id}" ]]; then
   echo 'vim-go-tools container not found. Creating...'
-  docker create -v '/usr/lib/go' --name 'vim-go-tools' \
-    'jare/go-tools' '/bin/true'
+  docker create -v '/usr/local/go' --name 'vim-go-tools' \
+    'omnidapps/go-tools' '/bin/true'
+  docker volume create dev-mount
   echo 'Done!'
  fi
- docker run -it --rm --volumes-from vim-go-tools -v $('pwd'):/home/developer/workspace omnidapps/vim:alpine "${@}"
 }
 
 if [ -x "$(command -v docker)" ]; then
@@ -193,5 +193,16 @@ if [ -x "$(command -v docker)" ]; then
 else
   echo "WARNING: Docker not installed, so vim will not be containerized."
 fi
+ed
 
-alias vim="docker run -it --rm --volumes-from tmux omnidapps/nvim:alpine nvim"
+function vim() {
+  basename=""
+  if [ ! -z "${@}" ]; then
+    real=`realpath -e ${@}`
+    vmount=`dirname $real`
+    basename=`basename ${@}`
+  else
+    vmount="$PWD"
+  fi
+  docker run -it --rm -v $vmount:/home/developer/workspace omnidapps/nvim:alpine nvim $basename
+}
