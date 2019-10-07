@@ -207,7 +207,6 @@ function vim() {
       real=`realpath -e $1`
     fi
     vmount=`dirname $real`
-    echo $vmount
   else
     vmount="$PWD"
   fi
