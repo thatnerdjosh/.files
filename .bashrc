@@ -196,13 +196,24 @@ fi
 ed
 
 function vim() {
-  basename=""
-  if [ ! -z "${@}" ]; then
-    real=`realpath -e ${@}`
+  local basename="$1"
+  local vmount=""
+  local real=""
+  if [ ! -z "$1" ]; then
+    basename=`basename $1`
+    if cat /etc/os-release | grep alpine 2>&1 >/dev/null; then
+      real=`realpath $1`
+    else
+      real=`realpath -e $1`
+    fi
     vmount=`dirname $real`
-    basename=`basename ${@}`
+    echo $vmount
   else
     vmount="$PWD"
   fi
-  docker run -it --rm -v $vmount:/home/developer/workspace omnidapps/nvim:alpine nvim $basename
+  if ! mount | grep docker.sock 2>&1 >/dev/null; then
+    docker run -it --rm -v $vmount:/home/developer/workspace omnidapps/nvim:alpine nvim $basename
+  else
+    docker run -it --rm --volumes-from tmux -w $vmount omnidapps/nvim:alpine nvim $basename
+  fi
 }
