@@ -199,14 +199,9 @@ function vim() {
   local basename="$1"
   local vmount=""
   local real=""
-  if [ ! -z "$1" ] && ls $1 &>/dev/null; then
+  if [ ! -z "$1" ]; then
     basename=`basename $1`
-    if cat /etc/os-release | grep alpine 2>&1 >/dev/null; then
-      real=`realpath $1`
-    else
-      real=`realpath -e $1`
-    fi
-    vmount=`dirname $real`
+    vmount=`dirname $1 | xargs realpath`
   else
     vmount="$PWD"
   fi
