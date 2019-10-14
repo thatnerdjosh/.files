@@ -207,7 +207,7 @@ function vim() {
     vmount="$PWD"
   fi
   if ! mount | grep docker.sock 2>&1 >/dev/null; then
-    docker run -it --rm -v $vmount:/home/developer/workspace omnidapps/nvim:alpine nvim $basename
+    docker run -it --rm --volumes-from vim-go-tools -v $vmount:/home/developer/workspace omnidapps/nvim:alpine nvim $basename
   else
     docker run -it --rm --volumes-from tmux -w $vmount omnidapps/nvim:alpine nvim $basename
   fi
