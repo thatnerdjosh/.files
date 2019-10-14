@@ -200,8 +200,9 @@ function vim() {
   local vmount=""
   local real=""
   if [ ! -z "$1" ]; then
-    basename=`basename $1`
-    vmount=`dirname $1 | xargs realpath`
+    real=`readlink $1`
+    basename=`basename $real`
+    vmount=`dirname $real | xargs realpath`
   else
     vmount="$PWD"
   fi
