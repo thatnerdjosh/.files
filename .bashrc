@@ -176,40 +176,7 @@ export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
-
-function ed() {
- local dtc_id=$(docker ps -a -q --filter 'name=vim-go-tools')
- if [[ -z "${dtc_id}" ]]; then
-  echo 'vim-go-tools container not found. Creating...'
-  docker create -v '/usr/local/go' --name 'vim-go-tools' \
-    'omnidapps/go-tools' '/bin/true'
-  docker volume create dev-mount
-  echo 'Done!'
- fi
-}
-
-if [ -x "$(command -v docker)" ]; then
-  export -f ed
-else
-  echo "WARNING: Docker not installed, so vim will not be containerized."
-fi
-ed
-
-function vim() {
-  local basename="$1"
-  local vmount=""
-  local real=""
-  if [ ! -z "$1" ]; then
-    real=`readlink -f $1`
-    basename=`basename $real`
-    project=`dirname $real | xargs basename`
-    vmount=`dirname $real | xargs realpath`
-  else
-    vmount="$PWD"
-  fi
-  if ! mount | grep docker.sock 2>&1 >/dev/null; then
-    docker run -it --rm --volumes-from vim-go-tools -w /home/developer/workspace/$project -v $vmount:/home/developer/workspace/$project omnidapps/nvim:alpine nvim $basename
-  else
-    docker run -it --rm --volumes-from tmux -w $vmount omnidapps/nvim:alpine nvim $basename
-  fi
-}
+[ -s "$HOME/.dockereditrc" ] && \. "$HOME/.dockereditrc"
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin:$GOBIN
