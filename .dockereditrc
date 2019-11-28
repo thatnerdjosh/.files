@@ -1,0 +1,45 @@
+if [ -x "$(command -v docker)" ]; then
+  function ed() {
+   local dtc_id=$(docker ps -a -q --filter 'name=vim-go-tools')
+   if [[ -z "${dtc_id}" ]]; then
+    echo 'vim-go-tools container not found. Creating...'
+    docker create -v '/usr/local/go' --name 'vim-go-tools' \
+      'omnidapps/go-tools' '/bin/true'
+    docker volume create dev-mount
+    echo 'Done!'
+   fi
+  }
+
+  function vim() {
+    local basename="$1"
+    local vmount=""
+    local real=""
+    # If file path is not empty, then derive the project and related vars from that
+    if [ ! -z "$1" ]; then
+      real=`realpath $1`
+      basename=`basename $real`
+      project=`dirname $real | xargs basename`
+      vmount=`dirname $real`
+    # Otherwise, derive the project and related vars from cwd
+    else
+      vmount="$PWD" # Gives us a full path, we shouldn't need readlink
+      project=`echo $vmount | xargs basename`
+      vmount=`echo $vmount | xargs realpath`
+    fi
+    if ! mount | grep docker.sock 2>&1 >/dev/null; then
+      docker run -it --rm \
+        --volumes-from vim-go-tools \
+        -w /home/developer/workspace/$project \
+        -v $vmount:/home/developer/workspace/$project \
+        omnidapps/nvim:alpine nvim $basename
+    else
+      docker run -it --rm \
+        --volumes-from tmux \
+        -w $vmount \
+        omnidapps/nvim:alpine nvim $basename
+    fi
+  }
+  ed
+else
+  echo "WARNING: Docker not installed, so vim and go-tools will not be containerized."
+fi
