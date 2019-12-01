@@ -1,6 +1,10 @@
 # .bash_profile
 
-# Get the aliases and functions
+if [ -f ~/.aliases ]; then
+  . ~/.aliases 
+fi
+
+# Get functions
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
@@ -9,5 +13,6 @@ fi
 if [ -f ~/.profile ]; then
 	. ~/.profile
 fi
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
