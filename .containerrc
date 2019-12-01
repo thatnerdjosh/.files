@@ -1,0 +1,3 @@
+function go() {
+  docker run -it --rm -v $GOBIN:/go/bin -v $PWD:/go/src -w /go/src golang go $@
+}

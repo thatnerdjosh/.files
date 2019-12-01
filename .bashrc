@@ -177,6 +177,7 @@ export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m
 # eval "$(pyenv virtualenv-init -)"
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 [ -s "$HOME/.dockereditrc" ] && \. "$HOME/.dockereditrc"
+[ -s "$HOME/.containerrc" ] && \. "$HOME/.containerrc"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin:$GOBIN

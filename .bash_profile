@@ -1,9 +1,5 @@
 # .bash_profile
 
-if [ -f ~/.aliases ]; then
-  . ~/.aliases 
-fi
-
 # Get functions
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
