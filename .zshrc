@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/omnidapps/.oh-my-zsh"
+export ZSH="/home/omnidapps/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="frisk"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -97,20 +97,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-[ -s "$HOME/.dockereditrc" ] && \. "$HOME/.dockereditrc"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:/usr/local/go/bin:$GOBIN
-
-# Add unameOut case to check if darwin and should load this.
-[ -s "$HOME/.zshrc_mac" ] && \. "$HOME/.zshrc_mac"
-[ -s "$HOME/sensitive/.cloudenv" ] && \. "$HOME/sensitive/.cloudenv"
