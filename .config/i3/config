@@ -33,19 +33,19 @@ bindsym $mod+Return exec hyper
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec dmenu_recency
 
 # launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
+bindsym $mod+z exec morc_menu
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-# exec --no-startup-id volumeicon
+# exec volumeicon
 # bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-# exec --no-startup-id pulseaudio
-exec --no-startup-id pa-applet
+# exec pulseaudio
+exec pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
@@ -61,14 +61,14 @@ bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $mod+t exec pkill compton
+bindsym $mod+Ctrl+t exec compton -b
+bindsym $mod+Shift+d exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym Print exec i3-scrot
+bindsym $mod+Print exec i3-scrot -w
+bindsym $mod+Shift+Print exec i3-scrot -s
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+bindsym $mod+Ctrl+x exec xkill
 
 # focus_follows_mouse no
 
@@ -134,6 +134,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 #navigate workspaces next / previous
+bindsym Mod1+Left move workspace to output left
+bindsym Mod1+Right move workspace to output right
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
@@ -241,13 +243,13 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec i3exit lock, mode "default"
+    bindsym s exec i3exit suspend, mode "default"
+    bindsym u exec i3exit switch_user, mode "default"
+    bindsym e exec i3exit logout, mode "default"
+    bindsym h exec i3exit hibernate, mode "default"
+    bindsym r exec i3exit reboot, mode "default"
+    bindsym Shift+s exec i3exit shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -279,25 +281,25 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec swaylock
 
 # Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/auto_lock_screen.sh
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec --no-startup-id srandrd autorandr --change
-exec --no-startup-id autorandr --change
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec manjaro-hello
+exec nm-applet
+exec xfce4-power-manager
+exec pamac-tray
+exec clipit
+exec blueman-applet
+# exec_always sbxkb
+# exec start_conky_maia
+exec start_conky_green
+# exec xautolock -time 10 -locker ~/.config/i3/auto_lock_screen.sh
+exec_always ff-theme-util
+exec_always fix_xcursor
+exec srandrd autorandr --change
+exec autorandr --change
+exec nitrogen --restore; sleep 1; compton -b
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -311,28 +313,30 @@ exec --no-startup-id autorandr --change
 # to:
 # background $term_background
 # Same logic applied to everything else.
-set_from_resource $term_background background
-set_from_resource $term_foreground foreground
-set_from_resource $term_color0     color0
-set_from_resource $term_color1     color1
-set_from_resource $term_color2     color2
-set_from_resource $term_color3     color3
-set_from_resource $term_color4     color4
-set_from_resource $term_color5     color5
-set_from_resource $term_color6     color6
-set_from_resource $term_color7     color7
-set_from_resource $term_color8     color8
-set_from_resource $term_color9     color9
-set_from_resource $term_color10    color10
-set_from_resource $term_color11    color11
-set_from_resource $term_color12    color12
-set_from_resource $term_color13    color13
-set_from_resource $term_color14    color14
-set_from_resource $term_color15    color15
+#
+# set_from_resource $term_background background
+# set_from_resource $term_foreground foreground
+# set_from_resource $term_color0     color0
+# set_from_resource $term_color1     color1
+# set_from_resource $term_color2     color2
+# set_from_resource $term_color3     color3
+# set_from_resource $term_color4     color4
+# set_from_resource $term_color5     color5
+# set_from_resource $term_color6     color6
+# set_from_resource $term_color7     color7
+# set_from_resource $term_color8     color8
+# set_from_resource $term_color9     color9
+# set_from_resource $term_color10    color10
+# set_from_resource $term_color11    color11
+# set_from_resource $term_color12    color12
+# set_from_resource $term_color13    color13
+# set_from_resource $term_color14    color14
+# set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
+	font pango: DejaVu Sans Mono, FontAwesome 11
+	#i3bar_command i3bar
 	status_command i3status
 	position bottom
 
@@ -343,7 +347,7 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+	# strip_workspace_numbers yes
 
     colors {
         background #222D31
@@ -364,11 +368,11 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3  #000000
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948  #000000
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948  #000000
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2  #000000
+  client.placeholder      #000000 #0c0c0c #ffffff #000000   #000000
 
   client.background       #2B2C2B
 
