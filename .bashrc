@@ -181,3 +181,6 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin:$GOBIN
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
