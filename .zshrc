@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/omnidapps/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -102,4 +102,17 @@ if [[ -f ~/.aliases ]]; then
   . ~/.aliases
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
+if [[ -f ~/.zprofile ]]; then
+  . ~/.zprofile
+fi
+
+
+export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export GOBIN="$HOME/go/bin"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add
+fi
