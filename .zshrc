@@ -68,7 +68,7 @@ ZSH_THEME="suvash"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,7 +107,7 @@ if [[ -f ~/.zprofile ]]; then
 fi
 
 
-export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.gem/ruby/2.6.0/bin:/home/jsantos/.gem/ruby/2.7.0/bin:$PATH"
 export GOBIN="$HOME/go/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -116,3 +116,12 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
   ssh-add
 fi
+neofetch
+. /opt/asdf-vm/asdf.sh
+fpath=($fpath "/home/jsantos/.zfunctions")
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
+source $(dirname $(gem which colorls))/tab_complete.sh
+alias ls='colorls -h --group-directories-first'
