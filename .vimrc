@@ -1,11 +1,10 @@
 " ================ Plugin Config ====================
 " https://github.com/junegunn/vim-plug
 call plug#begin()
+Plug 'fatih/vim-go'
+Plug 'tomasiser/vim-code-dark'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Shougo/neosnippet-snippets'
-" Plug 'ludovicchabant/vim-gutentags'
 Plug 'aonemd/kuroi.vim'
-Plug 'Shougo/neosnippet.vim'
 Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gabrielelana/vim-markdown'
@@ -15,15 +14,16 @@ Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
+  \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'fatih/vim-go', { 'tag': '*' }
-Plug 'nsf/gocode', { 'rtp': 'vim' }
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 set background=dark
-silent! colorscheme kuroi
+silent! colorscheme codedark
 
 set path=$PWD/**
 "
@@ -65,7 +65,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h
     \ match ExtraWhitespace /\s\+$/
 
-set encoding=utf-8
+set encoding=UTF-8
 let python_highlight_all=1
 let mapleader = ","
 let g:ctrlp_extensions = ['tag']
@@ -109,13 +109,6 @@ let g:tagbar_type_go = {
 	\ 'ctagsbin'  : 'gotags',
 	\ 'ctagsargs' : '-sort -silent'
 \ }
-let g:go_snippet_engine = "neosnippet"
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
- \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 nnoremap <leader>. :CtrlPTag<cr>
 map <leader>n :NERDTreeToggle<CR>
@@ -127,3 +120,15 @@ nnoremap <Leader>a :Ack!<Space>
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+  \ 'Modified'  :'✹',
+  \ 'Staged'    :'✚',
+  \ 'Untracked' :'✭',
+  \ 'Renamed'   :'➜',
+  \ 'Unmerged'  :'═',
+  \ 'Deleted'   :'✖',
+  \ 'Dirty'     :'✗',
+  \ 'Ignored'   :'☒',
+  \ 'Clean'     :'✔︎',
+  \ 'Unknown'   :'?',
+  \ }
