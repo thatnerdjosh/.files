@@ -126,3 +126,4 @@ autoload -U promptinit; promptinit
 prompt spaceship
 source $(dirname $(gem which colorls))/tab_complete.sh
 alias ls='colorls -h --group-directories-first'
+alias osrs='java -Duser.home=$HOME -Djava.class.path=/usr/local/bin/jagexappletviewer.jar -Dcom.jagex.config=http://oldschool.runescape.com/jav_config.ws jagexappletviewer /usr/local/share/'
