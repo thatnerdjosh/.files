@@ -106,8 +106,6 @@ if [[ -f ~/.zprofile ]]; then
   . ~/.zprofile
 fi
 
-
-export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.gem/ruby/2.6.0/bin:/home/jsantos/.gem/ruby/2.7.0/bin:$PATH"
 export GOBIN="$HOME/go/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -117,8 +115,11 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   ssh-add
 fi
 neofetch
-. /opt/asdf-vm/asdf.sh
-fpath=($fpath "/home/jsantos/.zfunctions")
+. ~/.asdf/asdf.sh
+
+RUBY_PATH="$HOME/.gem/ruby/2.6.0/bin:$HOME/.gem/ruby/2.7.0/bin"
+export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$GOBIN:$RUBY_PATH:$PATH"
+fpath=($fpath "/home/josh/.zfunctions")
 
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
