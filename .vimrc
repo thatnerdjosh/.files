@@ -12,6 +12,7 @@ Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
+Plug 'google/vim-jsonnet'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
@@ -57,6 +58,9 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
+
+au BufNewFile,BufRead *.libsonnet
+    \ nnoremap <buffer> <leader>r :CustomPreview("jsonnet --jpath vendor")<cr>
 
 au BufNewFile,BufRead *.go
     \ nnoremap <buffer> <leader>r :GoRun<cr>
@@ -132,3 +136,19 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
   \ 'Clean'     :'✔︎',
   \ 'Unknown'   :'?',
   \ }
+
+" This should probably be refactored... I am new to VimScript
+fun! CustomPreview(cmd)
+    set splitright
+    let file_name = expand('%:p')
+    silent! exe "noautocmd vertical pedit ".a:cmd." ".file_name
+    noautocmd wincmd P
+    set buftype=nofile
+    exe "noautocmd r! ".a:cmd." ".file_name
+    vertical resize 60
+    set filetype=json
+    noautocmd wincmd p
+    set nosplitright
+endfun
+
+com -nargs=1 CustomPreview call CustomPreview(<args>)
