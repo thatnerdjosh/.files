@@ -114,7 +114,6 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
   ssh-add
 fi
-neofetch
 . ~/.asdf/asdf.sh
 
 RUBY_PATH="$HOME/.gem/ruby/2.6.0/bin:$HOME/.gem/ruby/2.7.0/bin"
