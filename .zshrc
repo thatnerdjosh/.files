@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,6 +119,7 @@ fi
 RUBY_PATH="$HOME/.gem/ruby/2.6.0/bin:$HOME/.gem/ruby/2.7.0/bin"
 export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$GOBIN:$RUBY_PATH:$PATH"
 fpath=($fpath "/home/josh/.zfunctions")
+eval "$(starship init zsh)"
 
 alias ls='exa --icons --git'
 alias osrs='java -Duser.home=$HOME -Djava.class.path=/usr/local/bin/jagexappletviewer.jar -Dcom.jagex.config=http://oldschool.runescape.com/jav_config.ws jagexappletviewer /usr/local/share/'
