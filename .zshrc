@@ -120,6 +120,5 @@ RUBY_PATH="$HOME/.gem/ruby/2.6.0/bin:$HOME/.gem/ruby/2.7.0/bin"
 export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$GOBIN:$RUBY_PATH:$PATH"
 fpath=($fpath "/home/josh/.zfunctions")
 
-source $(dirname $(gem which colorls))/tab_complete.sh
-alias ls='colorls -h --group-directories-first'
+alias ls='exa --icons --git'
 alias osrs='java -Duser.home=$HOME -Djava.class.path=/usr/local/bin/jagexappletviewer.jar -Dcom.jagex.config=http://oldschool.runescape.com/jav_config.ws jagexappletviewer /usr/local/share/'

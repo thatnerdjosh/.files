@@ -31,7 +31,6 @@ function setupDeps {
         brew install neofetch
     fi
 
-    sudo gem install colorls
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 }
 
