@@ -115,7 +115,14 @@ let g:tagbar_type_go = {
 	\ 'ctagsargs' : '-sort -silent'
 \ }
 
-nnoremap <leader>s :FZF<CR>
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>e :e<SPACE>
+noremap <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>s :split<CR>
+nnoremap <leader>q :quit<CR>
 nnoremap <leader>a :Ag<CR>
 nnoremap <leader>. :CtrlPTag<CR>
 map <leader>n :NERDTreeToggle<CR>

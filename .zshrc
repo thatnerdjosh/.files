@@ -68,7 +68,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,3 +123,4 @@ eval "$(starship init zsh)"
 
 alias ls='exa --icons --git'
 alias osrs='java -Duser.home=$HOME -Djava.class.path=/usr/local/bin/jagexappletviewer.jar -Dcom.jagex.config=http://oldschool.runescape.com/jav_config.ws jagexappletviewer /usr/local/share/'
+alias weather='curl v2.wttr.in'
