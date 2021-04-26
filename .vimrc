@@ -2,7 +2,7 @@
 " https://github.com/junegunn/vim-plug
 call plug#begin()
 Plug 'fatih/vim-go'
-Plug 'tomasiser/vim-code-dark'
+Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'aonemd/kuroi.vim'
 Plug 'tpope/vim-sensible'
@@ -20,11 +20,13 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
 
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf.vim'
+
+Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 set background=dark
-silent! colorscheme codedark
+silent! colorscheme gruvbox
 
 set path=$PWD/**
 "
@@ -71,10 +73,9 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h
 
 set encoding=UTF-8
 let python_highlight_all=1
-let mapleader = ","
+let mapleader = " "
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_cmd = 'CtrlPMixed'
-nmap <F8> :TagbarToggle<CR>
 " let g:gutentags_ctags_executable_go = 'gotags'
 " let g:gutentags_ctags_exclude=["vendor"]
 " let g:lightline = {
@@ -114,12 +115,16 @@ let g:tagbar_type_go = {
 	\ 'ctagsargs' : '-sort -silent'
 \ }
 
-nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <leader>s :FZF<CR>
+nnoremap <leader>a :Ag<CR>
+nnoremap <leader>. :CtrlPTag<CR>
 map <leader>n :NERDTreeToggle<CR>
+map <leader>o :NERDTreeToggle %<CR>
+nmap <leader>T :TagbarToggle<CR>
 map <leader>t :tabnew<CR>
+map <leader>c :tabclose<CR>
 nnoremap <leader>h :tabprevious<CR>
 nnoremap <leader>l gt
-nnoremap <Leader>a :Ack!<Space>
 
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
@@ -152,3 +157,4 @@ fun! CustomPreview(cmd)
 endfun
 
 com -nargs=1 CustomPreview call CustomPreview(<args>)
+autocmd VimEnter * TagbarToggle
