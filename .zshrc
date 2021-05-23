@@ -118,6 +118,8 @@ fi
 
 RUBY_PATH="$HOME/.gem/ruby/2.6.0/bin:$HOME/.gem/ruby/2.7.0/bin"
 export PATH="$(python3 -m site --user-base)/bin:$HOME/.local/bin:$GOBIN:$RUBY_PATH:$PATH"
+export TERM="xterm-256color"
+
 fpath=($fpath "/home/josh/.zfunctions")
 eval "$(starship init zsh)"
 
