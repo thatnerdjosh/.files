@@ -3,6 +3,7 @@ FROM fedora
 # System setup
 RUN dnf -y update && \
     dnf -y install \
+        ctags \
         exa \
         bat \
         git \ 
@@ -36,6 +37,9 @@ RUN vim +'PlugInstall --sync' +qa 2>&1 >/dev/null && \
     ~/.tmux/plugins/tpm/bin/install_plugins
 
 # ASDF Version Manager
-RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1 && \
+    . ~/.asdf/asdf.sh && asdf plugin add nodejs && \
+    asdf install nodejs 14.17.0 && \
+    asdf global nodejs 14.17.0
 
 CMD ["zsh"]
