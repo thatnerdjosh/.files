@@ -8,6 +8,7 @@ RUN dnf -y update && \
         bat \
         git \ 
         zsh \
+        the_silver_searcher \
         tmux \
         vim && \
     curl -fLo /tmp/starship-install.sh https://starship.rs/install.sh && \
