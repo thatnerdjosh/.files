@@ -34,8 +34,8 @@ COPY .zshrc /home/omnidapps/.zshrc
 COPY .tmux.conf /home/omnidapps/.tmux.conf
 COPY .vimrc /home/omnidapps/.vimrc
 
-RUN vim +'PlugInstall --sync' +qa 2>&1 >/dev/null && \
-    ~/.tmux/plugins/tpm/bin/install_plugins
+RUN vim +'PlugInstall --sync' +qa 2>&1 >/dev/null
+RUN ~/.tmux/plugins/tpm/bin/install_plugins
 
 # ASDF Version Manager
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1 && \
