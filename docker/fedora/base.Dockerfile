@@ -36,7 +36,7 @@ COPY .vimrc /home/omnidapps/.vimrc
 
 RUN vim +'PlugInstall --sync' +qa 2>&1 >/dev/null && \
     chmod 755 ~/.tmux/plugins && \
-    ~/.tmux/plugins/tpm/bin/install_plugins
+    ~/.tmux/plugins/tpm/bin/install_plugins || true
 
 # ASDF Version Manager
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1 && \
