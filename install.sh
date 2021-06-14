@@ -29,6 +29,10 @@ function setupDeps {
         brew tap homebrew/cask-fonts
         brew install --cask font-hack-nerd-font
         brew install neofetch
+    else
+      git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+      cd nerd-fonts
+      ./install.sh Hack
     fi
 
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
