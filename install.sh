@@ -7,11 +7,12 @@
 #######
 
 function setupZsh {
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
     cp .zshrc ~
+    sudo chsh -s "$(which zsh)" $USER
 }
 
 function setupVim {
@@ -28,7 +29,7 @@ function setupDeps {
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         brew tap homebrew/cask-fonts
         brew install --cask font-hack-nerd-font
-        brew install neofetch
+        brew install neofetch exa bat
     else
       git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
       cd nerd-fonts
