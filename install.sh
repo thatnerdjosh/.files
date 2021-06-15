@@ -36,25 +36,28 @@ function setupDeps {
       fc-cache -v
     fi
 
-    setupCode
+    if [ "$machine" == "Linux" ]; then
+      distro="$(cat /etc/os-release | grep -e "^NAME=" | awk -F "=" '{ print $2}')"
+      case "${distro}" in
+        Fedora*)
+          url="https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64"
+          ext="rpm"
+          sudo dnf -y install exa bat tmux vim zsh;;
+        *)  url="";;
+      esac
+    elif [ "$machine" == "Darwin" ]; then
+      brew install --cask visual-studio-code
+    fi
+
+    setupCode "${url}" "${ext}"
     if [ ! -d ~/.asdf ]; then
       git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
     fi
 }
 
 function setupCode {
-  if [ "$machine" == "Linux" ]; then
-    distro="$(cat /etc/os-release | grep -e "^NAME=" | awk -F "=" '{ print $2}')"
-    case "${distro}" in
-      Fedora*)
-        url="https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64"
-        ext="rpm";;
-      *)  url="";;
-    esac
-  elif [ "$machine" == "Darwin" ]; then
-    brew install --cask visual-studio-code
-  fi
-
+  local url=$1
+  local ext=$2
   if [ "${url}" != "" ] && [ ! -f "code.${ext}" ]; then
     wget -O "code.${ext}" "${url}"
     if [ "${ext}" == "rpm" ]; then
