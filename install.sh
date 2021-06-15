@@ -31,9 +31,8 @@ function setupDeps {
         brew install --cask font-hack-nerd-font
         brew install neofetch exa bat
     else
-      git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
-      cd nerd-fonts
-      ./install.sh Hack
+      mkdir -p ~/.local/share/fonts
+      cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
     fi
 
     setupCode
