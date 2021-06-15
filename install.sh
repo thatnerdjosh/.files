@@ -9,7 +9,7 @@
 function setupZsh {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone git@github.com:zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
     cp .zshrc ~
 }
@@ -35,7 +35,31 @@ function setupDeps {
       ./install.sh Hack
     fi
 
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+    setupCode
+    if [ ! -d ~/.asdf ]; then
+      git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+    fi
+}
+
+function setupCode {
+  if [ "$machine" == "Linux" ]; then
+    distro="$(cat /etc/os-release | grep -e "^NAME=" | awk -F "=" '{ print $2}')"
+    case "${distro}" in
+      Fedora*)
+        url="https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64"
+        ext="rpm";;
+      *)  url="";;
+    esac
+  elif [ "$machine" == "Darwin" ]; then
+    brew install --cask visual-studio-code
+  fi
+
+  if [ "${url}" != "" ] && [ ! -f "code.${ext}" ]; then
+    wget -O "code.${ext}" "${url}"
+    if [ "${ext}" == "rpm" ]; then
+      sudo rpm -Uvh code.rpm
+    fi
+  fi
 }
 
 # Get Platform
