@@ -167,4 +167,3 @@ fun! CustomPreview(cmd)
 endfun
 
 com -nargs=1 CustomPreview call CustomPreview(<args>)
-autocmd VimEnter * TagbarToggle
