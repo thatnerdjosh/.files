@@ -44,6 +44,9 @@ set expandtab
 set noshowmode
 set relativenumber
 
+" Can haz ability to escape terminal easily plz?
+tnoremap <ESC> <C-w>:q!<CR>
+
 nnoremap gb :ls<CR>:b<Space>
 
 au BufNewFile,BufRead *.py
