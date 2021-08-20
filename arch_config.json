@@ -1,0 +1,51 @@
+{
+    "audio": null,
+    "bootloader": "systemd-bootctl",
+    "filesystem": "btrfs",
+    "harddrive": {
+        "path": "$DISK"
+    },
+    "hostname": "$HOSTNAME",
+    "kernels": [
+        "linux", 
+        "linux-hardened"
+    ],
+    "keyboard-language": "us",
+    "mirror-region": {
+        "Thailand": {
+            "https://mirror.kku.ac.th/archlinux/$repo/os/$arch": true
+        }
+    },
+    "nic": {
+        "NetworkManager": true
+    },
+    "packages": [
+        "alacritty",
+        "code",
+        "code-marketplace",
+        "discord",
+        "dmenu",
+        "firefox",
+        "git",
+        "libxft",
+        "libxinerama",
+        "noto-fonts",
+        "openssh",
+        "pulseaudio",
+        "pulseaudio-alsa",
+	"tmux",
+        "ttf-bitstream-vera",
+        "vim",
+        "xorg-server",
+        "xorg-server-devel",
+        "xorg-xinit",
+	"zsh"
+    ],
+    "profile": null,
+    "superusers": {
+        "josh": {
+            "!password": "$SUPERUSER_DEFAULT_PASSWORD"
+        }
+    },
+    "timezone": "Asia/Bangkok"
+}
