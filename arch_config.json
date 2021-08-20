@@ -13,7 +13,7 @@
     "keyboard-language": "us",
     "mirror-region": {
         "Thailand": {
-            "https://mirror.kku.ac.th/archlinux/$repo/os/$arch": true
+            "https://mirror.kku.ac.th/archlinux/${DOLLAR}repo/os/${DOLLAR}arch": true
         }
     },
     "nic": {
@@ -22,7 +22,6 @@
     "packages": [
         "alacritty",
         "code",
-        "code-marketplace",
         "discord",
         "dmenu",
         "firefox",
@@ -33,13 +32,13 @@
         "openssh",
         "pulseaudio",
         "pulseaudio-alsa",
-	"tmux",
+        "tmux",
         "ttf-bitstream-vera",
         "vim",
         "xorg-server",
         "xorg-server-devel",
         "xorg-xinit",
-	"zsh"
+        "zsh"
     ],
     "profile": null,
     "superusers": {
