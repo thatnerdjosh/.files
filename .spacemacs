@@ -439,15 +439,26 @@ See the header of this file for more information."
 This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
-If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  )
+If you are unsure, try setting them in `dotspacemacs/user-config' first.")
+
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
-dump."
-  )
+dump.")
+
+
+(defun thatnerdjosh/go-mode-toggle-integration-test-tag ()
+  "Toggles integration test tag for go mode layer
+This function is called as part of a custom keybind while go-mode is loaded
+and active."
+  (interactive)
+  (setq integration-tags " --tags=integration")
+  (setq integration-regexp (regexp-quote integration-tags))
+  (if (not(string-match-p integration-regexp go-test-command))
+      (setq go-test-command (concat go-test-command integration-tags))
+    (setq go-test-command (replace-regexp-in-string integration-regexp "" go-test-command))))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -455,7 +466,9 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (setq neo-theme 'icons))
+  (eval-after-load 'go-mode
+    '(define-key go-mode-map (kbd "M-i") 'thatnerdjosh/go-mode-toggle-integration-test-tag)))
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
