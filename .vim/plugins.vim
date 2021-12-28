@@ -31,4 +31,5 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
   \ 'Unknown'   :'?',
   \ }
 
-
+set background=dark
+colorscheme gruvbox
