@@ -19,6 +19,8 @@ function setupZsh {
 function setupVim {
     cp -rf .vim ~
     cp .vimrc ~
+    asdf plugin add nodejs
+    asdf install nodejs lts
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
