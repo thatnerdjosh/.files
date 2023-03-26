@@ -1,7 +1,6 @@
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-export ANDROID_HOME=~/Android/Sdk
-export PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-export GOPATH=~/development/go
+export PATH="$PATH:$(python3 -m site --user-base)/bin"
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH=$PATH:/usr/local/go/bin:$GOBIN
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
