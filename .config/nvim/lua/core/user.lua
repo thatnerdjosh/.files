@@ -6,7 +6,7 @@
 ---@field installed table
 
 ---@class LspConfig
----@field languages string
+---@field languages table
 
 ---@class UserConfig
 ---@field options VimOptions

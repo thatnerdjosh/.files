@@ -10,7 +10,18 @@ local userConfig = {
 	packages = {
 		manager = "lazy.nvim",
 		installed = {
-			"neovim/nvim-lspconfig",
+			{
+				lazy = true,
+				"neovim/nvim-lspconfig",
+			},
+			{
+				lazy = false,
+				priority=1000,
+				'tanvirtin/monokai.nvim'
+			},
+			{
+				"folke/neodev.nvim"
+			}
 		},
 	},
 	options = {

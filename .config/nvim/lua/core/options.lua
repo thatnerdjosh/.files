@@ -20,10 +20,19 @@ Options.Linum = {
 
 ---@class VimOptions
 ---@field linum table<VimSetting>
+---@field colorscheme string
 Options.DefaultConfig = {
-	linum = {}
+	linum = {},
+	colorscheme = "monokai"
 }
 
+-- This exists so the user doesn't need to be concerned with ViM specifics
+Options.ActionMapping = {
+	linum = "setting",
+	colorscheme = "command"
+}
+
+-- FIXME: This leaks to the global scope, migrate to local that's exported.
 ---@param userConfig UserConfig
 function Options.Configure(userConfig)
 	local config = {}
@@ -32,10 +41,14 @@ function Options.Configure(userConfig)
 	end
 
 	-- Each config item is a table
-	for _, opt in pairs(config) do
-		-- Each table contains setting tables
-		for _, vim_setting in pairs(opt) do
-			vim.o[vim_setting.key] = vim_setting.value
+	for cfgItem, cfgVal in pairs(config) do
+		if Options.ActionMapping[cfgItem] == "setting" then
+			-- Each table contains setting tables
+			for k, v in pairs(cfgVal) do
+				vim.o[v.key] = v.value
+			end
+		elseif Options.ActionMapping[cfgItem] == "command" then
+			vim.cmd[cfgItem](cfgVal)
 		end
 	end
 end
