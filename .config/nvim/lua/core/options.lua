@@ -19,8 +19,8 @@ Options.Linum = {
 }
 
 ---@class VimOptions
----@field linum table<VimSetting>
----@field colorscheme string
+---@field linum table<VimSetting>?
+---@field colorscheme string?
 Options.DefaultConfig = {
 	linum = {},
 	colorscheme = "monokai"

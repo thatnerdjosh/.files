@@ -1,6 +1,9 @@
 {
+  "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
+  "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
   "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
   "monokai.nvim": { "branch": "master", "commit": "b8bd44d5796503173627d7a1fc51f77ec3a08a63" },
   "neodev.nvim": { "branch": "main", "commit": "47dacc6d8f74936f7719351b025421df740c789b" },
+  "nvim-cmp": { "branch": "main", "commit": "51f1e11a89ec701221877532ee1a23557d291dd5" },
   "nvim-lspconfig": { "branch": "master", "commit": "67f151e84daddc86cc65f5d935e592f76b9f4496" }
 }
