@@ -32,6 +32,9 @@ local userConfig = {
                     "hrsh7th/cmp-buffer",
                 },
             },
+            {
+                "hrsh7th/vim-vsnip"
+            },
         },
     },
     options = {
