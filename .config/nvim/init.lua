@@ -1,7 +1,24 @@
-require "core/options"
+require "core" -- Load OmnidApps NeoViM core
 
-local settings = {
-	linum = Options.Linum.RELATIVE
+---@type UserConfig
+local userConfig = {
+	lsp = {
+		languages = {
+			"lua",
+		}
+	},
+	packages = {
+		manager = "lazy.nvim",
+		installed = {
+			"neovim/nvim-lspconfig",
+		},
+	},
+	options = {
+		linum = {
+			Options.Linum.Normal,
+			Options.Linum.Relative
+		}
+	}
 }
 
-vim.o[settings.linum] = true
+Core.Setup(userConfig)
