@@ -12,6 +12,7 @@ local userConfig = {
         installed = {
             {
                 "thatnerdjosh/nvim-ketho-wow",
+                -- dir = "~/workspace/nvim-ketho-wow",
             },
             {
                 "preservim/NerdTREE",
