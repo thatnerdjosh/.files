@@ -2,6 +2,8 @@ local lsp = {}
 
 local function configLua()
     require("neodev").setup({})
+    require("nvim-ketho-wow").setup({})
+
     local lspconfig = require('lspconfig')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     lspconfig.lua_ls.setup({
@@ -10,9 +12,9 @@ local function configLua()
             Lua = {
                 completion = {
                     callSnippet = "Replace"
-                }
+                },
             }
-        }
+        },
     })
 end
 

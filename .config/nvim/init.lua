@@ -11,13 +11,19 @@ local userConfig = {
         manager = "lazy.nvim",
         installed = {
             {
-                lazy = true,
+                "thatnerdjosh/nvim-ketho-wow",
+            },
+            {
+                "preservim/NerdTREE",
+            },
+            {
+                -- lazy = true,
                 "neovim/nvim-lspconfig",
             },
             {
                 -- TODO: Remove lazy.nvim specifics from main config
-                lazy = false,
-                priority = 1000,
+                -- lazy = false,
+                -- priority = 1000,
                 "tanvirtin/monokai.nvim"
             },
             {
@@ -26,7 +32,7 @@ local userConfig = {
             {
                 "hrsh7th/nvim-cmp",
                 -- TODO: Abstract out below in this table
-                event = "InsertEnter",
+                -- event = "InsertEnter",
                 dependencies = {
                     "hrsh7th/cmp-nvim-lsp",
                     "hrsh7th/cmp-buffer",
@@ -53,3 +59,4 @@ Core.Setup(userConfig)
 
 -- TODO: Migrate to setting
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd VimEnter * NERDTree | wincmd p]]
