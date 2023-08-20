@@ -1,15 +1,19 @@
 local cmp = {}
 function cmp.Configure()
     local cmpMod = require('cmp')
+    ---@diagnostic disable-next-line missing-fields
     cmpMod.setup({
         enabled = true,
         window = {
             completion = cmpMod.config.window.bordered(),
             documentation = cmpMod.config.window.bordered(),
         },
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end,
+        snippet = {
+            expand = function(args)
+                -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            end,
+        },
         mapping = cmpMod.mapping.preset.insert({
             ['<C-j>'] = cmpMod.mapping.scroll_docs(-4),
             ['<C-k>'] = cmpMod.mapping.scroll_docs(4),
@@ -20,6 +24,7 @@ function cmp.Configure()
         sources = cmpMod.config.sources({
             { name = 'nvim_lsp' },
         }),
+        ---@diagnostic disable-next-line missing-fields
         formatting = {
             format = function(entry, vim_item)
                 -- Kind icons

@@ -18,7 +18,7 @@ local userConfig = {
                 -- TODO: Remove lazy.nvim specifics from main config
                 lazy = false,
                 priority = 1000,
-                'tanvirtin/monokai.nvim'
+                "tanvirtin/monokai.nvim"
             },
             {
                 "folke/neodev.nvim"
@@ -33,8 +33,12 @@ local userConfig = {
                 },
             },
             {
-                "hrsh7th/vim-vsnip"
+                "L3MON4D3/LuaSnip",
+                version = "2.*",
             },
+            {
+                "vijaymarupudi/nvim-fzf"
+            }
         },
     },
     options = {
@@ -45,8 +49,7 @@ local userConfig = {
     }
 }
 
+Core.Setup(userConfig)
 
 -- TODO: Migrate to setting
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
-Core.Setup(userConfig)
