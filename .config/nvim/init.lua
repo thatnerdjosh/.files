@@ -1,9 +1,10 @@
-require "core" -- Load OmnidApps NeoViM core
+require "omnidapps.core" -- Load OmnidApps NeoViM core
 
 ---@type UserConfig
 local userConfig = {
     lsp = {
         languages = {
+            "c",
             "lua",
         }
     },
@@ -60,4 +61,3 @@ Core.Setup(userConfig)
 
 -- TODO: Migrate to setting
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-vim.cmd [[autocmd VimEnter * NERDTree | wincmd p]]
