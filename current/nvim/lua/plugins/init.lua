@@ -1,6 +1,15 @@
 return 
 {
 	{
+		"chipsenkbeil/org-roam.nvim",
+		tag = "0.1.0",
+		config = function()
+			require("org-roam").setup({
+				directory = "~/orgfiles"
+			})
+		end
+	},
+	{
 		'nvim-orgmode/orgmode',
 		event = 'VeryLazy',
 		ft = { 'org' },
