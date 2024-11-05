@@ -1,5 +1,9 @@
 #!/bin/sh
 
+installTPM() {
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
 installFonts() {
 	mkdir -p $HOME/.local/share/fonts
 	if [ ! -d $HOME/.local/share/fonts/mononoki ]; then
@@ -24,4 +28,5 @@ installConfig() {
 }
 
 installFonts
+installTPM
 installConfig "current"
