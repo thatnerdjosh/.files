@@ -14,7 +14,7 @@ vim.cmd([[
 ]])
 
 -- Use a more colorful built-in colorscheme
-pcall(vim.cmd, "colorscheme industry")
+pcall(vim.cmd, "colorscheme koehler")
 
 -- Make PHP open tag (`<?php`) stand out more
 vim.api.nvim_create_autocmd("FileType", {
