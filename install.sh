@@ -1,5 +1,10 @@
 #!/bin/sh
 
+installEditor() {
+	# TODO: Add support for other than NVChad
+	git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
+}
+
 installTPM() {
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
@@ -29,4 +34,5 @@ installConfig() {
 
 installFonts
 installTPM
+installEditor
 installConfig "current"
