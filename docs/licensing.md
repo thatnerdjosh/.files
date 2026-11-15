@@ -23,6 +23,10 @@ lockfiles and legacy/alternative configs are covered by [`REUSE.toml`](../REUSE.
   `SOLIDITY_LSP=solc` path uses the GPL-licensed compiler LSP.
 - **AGPL-3.0-or-later + proprietary:** not compatible. Avoid proprietary
   components such as `solidity-ls` (qiuxiang).
+- **AGPL-3.0-or-later + GPL-3.0 AI plugins:** compatible. `minuet-ai.nvim`,
+  `llm.nvim`, and `pi-coding-agent.nvim` are GPL-3.0; the combined
+  distribution is governed by AGPLv3. `flemma.nvim` and `teamtype-nvim` are
+  AGPL-3.0, the same family as this repository.
 
 ## Dependency inventory
 
@@ -37,6 +41,14 @@ lockfiles and legacy/alternative configs are covered by [`REUSE.toml`](../REUSE.
 | mason.nvim / mason-lspconfig.nvim | Apache-2.0 | LSP/tool installer |
 | nvim-treesitter | Apache-2.0 | Parsers and highlighting |
 | conform.nvim | MIT | Formatting |
+| minuet-ai.nvim | GPL-3.0 | Optional inline completion |
+| llm.nvim | GPL-3.0 | Optional chat and selected-text tools |
+| flemma.nvim | AGPL-3.0 | Optional `.chat` client and agent |
+| pi-coding-agent.nvim | GPL-3.0 | Optional terminal agent pane |
+| teamtype-nvim | AGPL-3.0-or-later | Optional collaborative editing |
+| nui.nvim | MIT | UI dependency of llm.nvim |
+| pi (external binary) | see upstream | Terminal agent; installed separately from pi.dev |
+| teamtype (external binary) | AGPL-3.0 | Collaboration daemon; packaged as `teamtype` |
 | Nomic Foundation Solidity LSP | MIT | Default Solidity LSP |
 | solc | GPL-3.0-or-later | Optional Solidity LSP/compiler |
 | Foundry (`forge`, `cast`, `anvil`) | MIT OR Apache-2.0 | Solidity toolchain |

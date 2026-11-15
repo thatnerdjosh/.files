@@ -55,6 +55,25 @@ Mason installs the Solidity language server.
   package. It is an experiment: the system compiler must match the project's
   compiler, and Foundry/remapping support is weaker than the Nomic server.
 
+## AI and collaboration (optional)
+
+The editor also wires in five optional plugins, none of which is needed for
+Solidity work:
+
+- **Minuet** — inline completion, manual by default (`<A-]>` requests, `<A-a>`
+  accepts a line).
+- **llm.nvim** — chat and selected-text tools (`<leader>ac`, `<leader>al`).
+- **Flemma** — `.chat` files and an agent, plain text and greppable
+  (`<leader>af`).
+- **pi** — terminal agent pane (`<leader>ap`).
+- **Teamtype** — encrypted peer-to-peer collaborative editing (`<leader>tj`,
+  `<leader>tf`).
+
+Credentials come only from environment variables such as `OPENAI_API_KEY`,
+`LLM_KEY`, and `ANTHROPIC_API_KEY`. `pi` and `teamtype` are external binaries.
+See [`docs/ai.md`](docs/ai.md) for the keymap table, every variable, safety
+notes, and how to turn the plugins off.
+
 ## Licensing
 
 This repository is licensed under **AGPL-3.0-or-later**. See [`LICENSE`](LICENSE)

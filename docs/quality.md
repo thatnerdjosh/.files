@@ -22,7 +22,7 @@ certification.
 | Command | Scope |
 |---|---|
 | `make lint` | ShellCheck, shfmt, StyLua, `reuse lint`, gitleaks, actionlint |
-| `make verify` | Lua syntax, config load, LSP attach, Treesitter parser, `forge fmt --check`, tmux parse, status modules, stow layout |
+| `make verify` | Lua syntax, config load, LSP attach, Treesitter parser, AI plugin registration, `forge fmt --check`, tmux parse, status modules, stow layout |
 | `make test` | `lint` + `verify` |
 | `make doctor` | Local tools, stow links, Mason server, parsers, fonts, tmux plugins |
 | `make bootstrap` | Pinned plugins, language server, missing parsers, tmux plugins |
@@ -47,6 +47,10 @@ Arch container. The installer is therefore tested, not duplicated.
 | Catppuccin assumes truecolor | Wrong colors in a Linux VT/256-color terminal | **Open.** Test the target terminal; add a TTY fallback profile |
 | `nvim-treesitter` `master` pin | Frozen branch; NvChad v2.5 uses the old API | **Open.** Revisit when NvChad migrates to the current API |
 | Secret scanning | Accidental credential commits | Controlled in CI by gitleaks; skipped locally when not installed |
+| AI plugins make network requests | Source or prompt data leaves the machine | Controlled: credentials are environment-only, Minuet is manual by default, auto-trigger is opt-in, gitleaks guards the repo |
+| Flemma autonomy | An agent can edit files and run shell commands | Partly controlled: upstream approval gating, Bubblewrap sandbox, 100-turn cap; review before relying on it |
+| External AI binaries (`pi`, `teamtype`) | Unpinned versions and separate update path | **Open.** Documented; no version pin or CI check yet |
+| Mixed GPL/AGPL plugins | License conflict or missing notices | Controlled: inventory in `docs/licensing.md`; AGPL-compatible, `reuse lint` in CI |
 
 ## Measurement and control
 
