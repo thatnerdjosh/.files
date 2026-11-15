@@ -19,6 +19,8 @@ if require_cmd nvim; then
 		"+luafile $REPO_ROOT/tests/lua/config_load.lua" +qa
 	check "treesitter solidity parser" nvim --headless \
 		"+luafile $REPO_ROOT/tests/lua/treesitter.lua" +qa
+	check "ai plugins load" nvim --headless \
+		"+luafile $REPO_ROOT/tests/lua/ai_plugins.lua" +qa
 else
 	skip "neovim checks" "install neovim"
 fi
