@@ -1,3 +1,6 @@
+-- SPDX-FileCopyrightText: 2026 thatnerdjosh
+-- SPDX-License-Identifier: AGPL-3.0-or-later
+
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
