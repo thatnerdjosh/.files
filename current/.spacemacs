@@ -1,3 +1,6 @@
+;; SPDX-FileCopyrightText: 2026 thatnerdjosh
+;; SPDX-License-Identifier: AGPL-3.0-or-later
+
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
