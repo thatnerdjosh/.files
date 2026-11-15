@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2026 thatnerdjosh
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: CI
+
+on:
+  push:
+    branches: [main, "iter/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Static analysis
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - name: Install tools
+        run: >-
+          pacman -Syu --noconfirm --needed
+          git make shellcheck shfmt stylua reuse gitleaks actionlint
+      - uses: actions/checkout@v4
+      - name: Run static analysis
+        run: make lint
+
+  verify:
+    name: Runtime verification
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    env:
+      TERM: xterm-256color
+    steps:
+      - name: Install tools
+        run: >-
+          pacman -Syu --noconfirm --needed
+          git make neovim tmux nodejs npm stow curl unzip wget fontconfig
+      - uses: actions/checkout@v4
+      - name: Install Foundry
+        run: |
+          curl -L https://foundry.paradigm.xyz | bash
+          "$HOME/.foundry/bin/foundryup"
+      - name: Install dotfiles
+        run: ./install.sh
+      - name: Bootstrap plugins and tools
+        run: make bootstrap
+      - name: Run verification
+        run: make verify
