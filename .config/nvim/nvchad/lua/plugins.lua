@@ -86,6 +86,73 @@ local plugins = {
     },
   },
 
+  -- Optional AI and collaboration plugins.  None is needed to edit Solidity,
+  -- and each one loads lazily or only touches its own filetype.  Credentials
+  -- come from environment variables; see docs/ai.md for the full reference.
+  {
+    "milanglacier/minuet-ai.nvim",
+    event = "InsertEnter",
+    opts = function()
+      return require("configs.ai").minuet()
+    end,
+  },
+
+  {
+    "Kurama622/llm.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+    cmd = { "LLMSessionToggle", "LLMSelectedTextHandler", "LLMAppHandler" },
+    keys = {
+      { "<leader>ac", "<cmd>LLMSessionToggle<cr>", desc = "LLM chat" },
+      { "<leader>al", "<cmd>LLMSelectedTextHandler<cr>", mode = "v", desc = "LLM selected text" },
+    },
+    config = function()
+      require("llm").setup(require("configs.ai").llm())
+    end,
+  },
+
+  {
+    "Flemma-Dev/flemma.nvim",
+    lazy = false,
+    keys = {
+      {
+        "<leader>af",
+        function()
+          require("configs.ai").new_chat()
+        end,
+        desc = "New Flemma chat",
+      },
+    },
+    opts = function()
+      return require("configs.ai").flemma()
+    end,
+  },
+
+  {
+    "anuragrao04/pi-coding-agent.nvim",
+    cmd = { "PiToggle", "PiContinue", "PiResume", "PiSelectModel", "PiSendBuffer", "PiSendSelection" },
+    keys = {
+      { "<leader>ap", "<cmd>PiToggle<cr>", desc = "pi toggle" },
+      { "<leader>aP", "<cmd>PiContinue<cr>", desc = "pi continue" },
+      { "<leader>aR", "<cmd>PiResume<cr>", desc = "pi resume" },
+      { "<leader>am", "<cmd>PiSelectModel<cr>", desc = "pi model" },
+      { "<leader>ab", "<cmd>PiSendBuffer<cr>", desc = "pi send buffer" },
+      { "<leader>as", "<cmd>PiSendSelection<cr>", mode = "v", desc = "pi send selection" },
+    },
+    opts = function()
+      return require("configs.ai").pi()
+    end,
+  },
+
+  {
+    "teamtype/teamtype-nvim",
+    lazy = false,
+    keys = {
+      { "<leader>tj", "<cmd>TeamtypeJumpToCursor<cr>", desc = "Teamtype jump to peer" },
+      { "<leader>tf", "<cmd>TeamtypeFollow<cr>", desc = "Teamtype follow peer" },
+      { "<leader>ti", "<cmd>TeamtypeInfo<cr>", desc = "Teamtype info" },
+    },
+  },
+
   { "tpope/vim-sleuth", lazy = false },
 }
 
