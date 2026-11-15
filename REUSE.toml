@@ -1,0 +1,8 @@
+version = 1
+
+# JSON lockfiles and legacy/alternative configs cannot carry comment headers.
+# The active, hand-maintained files carry SPDX headers directly.
+[[annotations]]
+path = ["**/*.json", "old/**", ".config/nvim/personal/**", "current/nvim"]
+SPDX-FileCopyrightText = "2026 thatnerdjosh"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
