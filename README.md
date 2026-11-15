@@ -64,6 +64,25 @@ compatibility notes.
 Third-party plugins and tools retain their own licenses. In particular, NvChad
 is GPL-3.0 and its notices must be preserved.
 
+## Development
+
+`./install.sh` installs fonts, TPM, and the stow links. It is idempotent, verifies
+the Mononoki download against a SHA-256 checksum, and puts `.spacemacs` in
+`$HOME` rather than `~/.config`.
+
+`make bootstrap` installs plugins from `lazy-lock.json`, the Solidity language
+server, any missing Treesitter parsers, and the tmux plugins. It never prompts.
+
+```sh
+make lint     # shellcheck, shfmt, stylua, reuse lint, gitleaks, actionlint
+make verify   # Neovim load, LSP attach, treesitter, forge fmt, tmux, stow
+make test     # lint + verify
+make doctor   # report local tools, links, and integrations
+```
+
+CI runs the same targets, and its verification job exercises `./install.sh`
+and `make bootstrap` on a clean Arch container.
+
 ## Quality
 
 See [`docs/quality.md`](docs/quality.md) for the current Sigma 6/DMAIC control
